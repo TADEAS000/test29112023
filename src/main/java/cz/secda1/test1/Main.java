@@ -39,6 +39,5 @@ public class Main {
         //Seskupte obědy do Mapy podle jejich alergenů Map<List<Allergen>, List<LunchItem>> kdy klíčem bude list obsažených alergenů a hodontou List jídel obashující dané alergeny.
         Map<List<Allergen>, List<LunchItem>> mapAllergens = TestUtils.groupMealsByAllergens(items);
         System.out.println(mapAllergens);
-
     }
 }
