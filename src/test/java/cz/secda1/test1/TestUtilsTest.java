@@ -22,13 +22,15 @@ class TestUtilsTest {
     @Test
     public void todaysMenuTest() {
         List<LunchItem> items = TestUtils.todaysMenu(allMeals, "29.11.2023");
+        assertNotNull(items);
         assertEquals(4, items.size());
-        items.containsAll(List.of(allMeals.get(20), allMeals.get(21), allMeals.get(22), allMeals.get(23)));
+        assertTrue(items.containsAll(List.of(allMeals.get(20), allMeals.get(21), allMeals.get(22), allMeals.get(23))));
     }
 
     @Test
     public void todaysMenuFilterNamesTest() {
         List<String> items = TestUtils.todaysMenuFilterNames(allMeals, "29.11.2023");
+        assertNotNull(items);
         assertEquals(4, items.size());
         assertTrue(items.containsAll(List.of("Houbová",
                 "Vepřový guláš s cibulí, těstoviny, ovoce",
@@ -40,6 +42,7 @@ class TestUtilsTest {
     @Test
     public void getAllMainDishesSortedTest() {
         List<String> items = TestUtils.getAllMainDishesSorted(allMeals);
+        assertNotNull(items);
         assertEquals(16, items.size());
         assertArrayEquals(new String[]{"Bramborák se salámem, zeleninový salát",
                 "Brokolicová poezie, brambory, rajče",
@@ -62,6 +65,7 @@ class TestUtilsTest {
     @Test
     public void getAllMainDishesWithoutAllergensTest() {
         List<String> items = TestUtils.getAllMainDishesWithoutAllergens(allMeals);
+        assertNotNull(items);
         assertEquals(1, items.size());
         assertEquals("Maďarský perkelt, rýže", items.get(0));
     }
@@ -69,6 +73,7 @@ class TestUtilsTest {
     @Test
     public void getDatesWhenDrinkIsFruitDrinkOrSyrupTest() {
         List<String> items = TestUtils.getDatesWhenDrinkIsFruitDrinkOrSyrup(allMeals);
+        assertNotNull(items);
         assertEquals(2, items.size());
         assertArrayEquals(new String[]{"30.11.2023", "01.12.2023"}, items.toArray());
     }
@@ -76,6 +81,7 @@ class TestUtilsTest {
     @Test
     public void getAllOrderedDishesTest() {
         List<String> items = TestUtils.getAllOrderedDishes(allMeals);
+        assertNotNull(items);
         assertEquals(24, items.size());
         assertArrayEquals(new String[]{"polevka: Valašská kyselica",
                 "oběd1: Vepřová plec na žampiónech, rýže",
@@ -105,19 +111,22 @@ class TestUtilsTest {
 
     @Test
     public void getSumOfAllOrderedMealsTest() {
-        double sum = TestUtils.getSumOfAllOrderedMeals(allMeals);
+        Double sum = TestUtils.getSumOfAllOrderedMeals(allMeals);
+        assertNotNull(sum);
         assertEquals(200d, sum);
     }
 
     @Test
     public void getSumOfAllOrderedMealsDefaultValueTest() {
-        double sum = TestUtils.getSumOfAllOrderedMeals(List.of(allMeals.get(2), allMeals.get(6)));
+        Double sum = TestUtils.getSumOfAllOrderedMeals(List.of(allMeals.get(2), allMeals.get(6)));
+        assertNotNull(sum);
         assertEquals(0d, sum);
     }
 
     @Test
     public void groupMealsByDateTest() {
         Map<String, List<LunchItem>> map = TestUtils.groupMealsByDate(allMeals);
+        assertNotNull(map);
         assertEquals(8, map.size());
         Set<String> keys = map.keySet();
         assertArrayEquals(new String[]{"28.11.2023",
@@ -136,13 +145,14 @@ class TestUtilsTest {
         assertArrayEquals(new LunchItem[]{allMeals.get(i++), allMeals.get(i++), allMeals.get(i++), allMeals.get(i++)}, map.get("28.11.2023").toArray());
         assertArrayEquals(new LunchItem[]{allMeals.get(i++), allMeals.get(i++), allMeals.get(i++), allMeals.get(i++)}, map.get("29.11.2023").toArray());
         assertArrayEquals(new LunchItem[]{allMeals.get(i++), allMeals.get(i++), allMeals.get(i++), allMeals.get(i++)}, map.get("30.11.2023").toArray());
-        assertArrayEquals(new LunchItem[]{allMeals.get(i++), allMeals.get(i++), allMeals.get(i++), allMeals.get(i++)}, map.get("01.12.2023").toArray());
+        assertArrayEquals(new LunchItem[]{allMeals.get(i++), allMeals.get(i++), allMeals.get(i++), allMeals.get(i)}, map.get("01.12.2023").toArray());
     }
 
 
     @Test
     public void groupMealsByAllergensTest() {
         Map<List<Allergen>, List<LunchItem>> map = TestUtils.groupMealsByAllergens(allMeals);
+        assertNotNull(map);
         assertEquals(6, map.size());
         assertTrue(map.keySet().containsAll(List.of(List.of(),
                 List.of(LunchDBService.eggs),

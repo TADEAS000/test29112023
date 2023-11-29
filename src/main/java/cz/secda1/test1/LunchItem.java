@@ -12,7 +12,7 @@ public class LunchItem {
     private String timeToCancel;
     private boolean ordered;
 
-    public LunchItem(String date, LunchItemKind kind, String menuOption,  String name, double price, List<Allergen> allergens, String timeToCancel, boolean ordered) {
+    public LunchItem(String date, LunchItemKind kind, String menuOption, String name, double price, List<Allergen> allergens, String timeToCancel, boolean ordered) {
         this.date = date;
         this.kind = kind;
         this.menuOption = menuOption;

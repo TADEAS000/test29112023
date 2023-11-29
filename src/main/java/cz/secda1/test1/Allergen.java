@@ -4,7 +4,7 @@ public class Allergen {
     private String code;
     private String name;
 
-    public Allergen(String code, String name){
+    public Allergen(String code, String name) {
         this.code = code;
         this.name = name;
     }
